@@ -1,0 +1,219 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+}
+
+body { 
+  font-family: 'Plus Jakarta Sans', sans-serif; 
+}
+
+/* Premium custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #0f172a;
+}
+::-webkit-scrollbar-thumb {
+    background: #334155;
+    border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #3b82f6;
+}
+
+/* 
+   HTML2CANVAS / PDF GENERATION OKLCH COLOR COMPATIBILITY OVERRIDES
+   Redefine standard Tailwind v4 color CSS variables using safe RGB/Hex values
+   specifically inside the #rphDocument tree to prevent the "unsupported color function oklch" error.
+*/
+#rphDocument {
+    --color-slate-50: #f8fafc !important;
+    --color-slate-100: #f1f5f9 !important;
+    --color-slate-200: #e2e8f0 !important;
+    --color-slate-300: #cbd5e1 !important;
+    --color-slate-400: #94a3b8 !important;
+    --color-slate-500: #64748b !important;
+    --color-slate-600: #475569 !important;
+    --color-slate-700: #334155 !important;
+    --color-slate-800: #1e293b !important;
+    --color-slate-900: #0f172a !important;
+
+    --color-emerald-50: #ecfdf5 !important;
+    --color-emerald-100: #d1fae5 !important;
+    --color-emerald-200: #a7f3d0 !important;
+    --color-emerald-300: #6ee7b7 !important;
+    --color-emerald-400: #34d399 !important;
+    --color-emerald-500: #10b981 !important;
+    --color-emerald-600: #059669 !important;
+    --color-emerald-700: #047857 !important;
+    --color-emerald-800: #065f46 !important;
+    --color-emerald-900: #064e3b !important;
+
+    --color-amber-50: #fffbeb !important;
+    --color-amber-100: #fef3c7 !important;
+    --color-amber-200: #fde68a !important;
+    --color-amber-300: #fcd34d !important;
+    --color-amber-400: #fbbf24 !important;
+    --color-amber-500: #f59e0b !important;
+    --color-amber-600: #d97706 !important;
+    --color-amber-700: #b45309 !important;
+    --color-amber-800: #92400e !important;
+    --color-amber-900: #78350f !important;
+
+    --color-zinc-50: #fafafa !important;
+    --color-zinc-100: #f4f4f5 !important;
+    --color-zinc-200: #e4e4e7 !important;
+    --color-zinc-300: #d4d4d8 !important;
+    --color-zinc-400: #a1a1aa !important;
+    --color-zinc-500: #71717a !important;
+    --color-zinc-600: #52525b !important;
+    --color-zinc-700: #3f3f46 !important;
+    --color-zinc-800: #27272a !important;
+    --color-zinc-900: #18181b !important;
+
+    --color-gray-50: #f9fafb !important;
+    --color-gray-100: #f3f4f6 !important;
+    --color-gray-200: #e5e7eb !important;
+    --color-gray-300: #d1d5db !important;
+    --color-gray-400: #9ca3af !important;
+    --color-gray-500: #6b7280 !important;
+    --color-gray-600: #4b5563 !important;
+    --color-gray-700: #374151 !important;
+    --color-gray-800: #1f2937 !important;
+    --color-gray-900: #111827 !important;
+}
+
+/* 
+   STRICT PDF MODE OVERRIDES 
+   Gaya ini dipasang secara dinamik semasa menjana PDF untuk memaksa kandungan muat 1 Muka Surat A4.
+*/
+.pdf-strict-mode {
+    padding: 16px !important; /* Kurangkan padding sekeliling */
+    font-size: 10px !important; /* Kecilkan font sedikit */
+    max-height: 275mm !important; /* Had ketinggian selamat A4 */
+    overflow: hidden !important;
+}
+.pdf-strict-mode h2 {
+    font-size: 13px !important;
+    margin-bottom: 2px !important;
+}
+.pdf-strict-mode table {
+    margin-bottom: 8px !important;
+}
+.pdf-strict-mode td {
+    padding: 3px 5px !important; /* Padatkan sel jadual */
+    font-size: 9.5px !important;
+}
+.pdf-strict-mode h3 {
+    font-size: 10px !important;
+    padding-top: 2px !important;
+    padding-bottom: 2px !important;
+    margin-bottom: 4px !important;
+}
+.pdf-strict-mode .print-break {
+    margin-bottom: 4px !important;
+}
+.pdf-strict-mode #rphContent {
+    margin-top: 4px !important;
+}
+.pdf-strict-mode #viewAktiviti {
+    min-height: 80px !important; /* Minimum kemas */
+    padding: 5px 8px !important;
+    font-size: 9px !important;
+    line-height: 1.4 !important;
+}
+.pdf-strict-mode .mt-10 {
+    margin-top: 12px !important; /* Tarik tandatangan naik ke atas */
+}
+
+/* Print styles optimized for physical A4 papers */
+@media print {
+    /* Hide all non-printable elements to prevent layout conflicts or multi-page gaps */
+    header,
+    footer,
+    nav,
+    aside,
+    .no-print,
+    .lg\:col-span-5 {
+        display: none !important;
+    }
+
+    /* Force parent layout tags to be static block layout so elements do not collapse */
+    html,
+    body,
+    #root,
+    main,
+    #rph-editor-grid {
+        display: block !important;
+        position: static !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: #ffffff !important;
+        color: #000000 !important;
+        overflow: visible !important;
+    }
+
+    /* Target the RPH document element, letting it flow naturally in static block layout */
+    #rphDocument {
+        display: block !important;
+        visibility: visible !important;
+        position: static !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        border: none !important;
+        box-shadow: none !important;
+        padding: 8mm 6mm !important;
+        margin: 0 !important;
+        background: #ffffff !important;
+        color: #000000 !important;
+        overflow: visible !important;
+    }
+
+    /* Force text inside the printed document to be crisp black for printing legibility */
+    #rphDocument h2,
+    #rphDocument h3,
+    #rphDocument p,
+    #rphDocument span,
+    #rphDocument td,
+    #rphDocument div,
+    #rphDocument strong {
+        color: #000000 !important;
+    }
+
+    /* Ensure table borders are visible and styled cleanly */
+    #rphDocument table,
+    #rphDocument td,
+    #rphDocument th {
+        border: 1px solid #000000 !important;
+    }
+
+    /* Retain color settings / backgrounds inside the print output */
+    * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        color-adjust: exact !important;
+        box-shadow: none !important;
+    }
+
+    /* Avoid splitting sections in the middle of a sentence or box if possible */
+    .print-break {
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+    }
+
+    /* Avoid splitting table rows and table headers across multiple pages */
+    #rphDocument table tr {
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+    }
+}
