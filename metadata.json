@@ -1,0 +1,6 @@
+{
+  "name": "Sistem RPH RBT T3 Pro",
+  "description": "Sistem pengurusan dan penjanaan Rancangan Pengajaran Harian (RPH) Reka Bentuk dan Teknologi (RBT) Tingkatan 3 dengan integrasi AI dan segerak Google Sheets.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
